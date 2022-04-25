@@ -4,15 +4,18 @@ import lightOn from './light-on.svg';
 import lightOff from './light-off.svg';
 
 const Light = ({ name, state }) => {
-  const [light, setLight] = useState([state]);
+  const [light, setLight] = useState(state);
   const handleClick = () => {
-    light === 'on' ? setLight(light === 'off') : setLight(light === 'on');
+    light === 'on' ? setLight('off') : setLight('on');
   };
 
   return (
     <>
       <div className="light" onClick={handleClick}>
-        <img src={light ? lightOn : lightOff}></img>
+        <div className="light__icon">
+          <img src={light === 'on' ? lightOn : lightOff}></img>
+        </div>
+        <div className="light__name">{name}</div>
       </div>
     </>
   );
